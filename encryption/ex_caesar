@@ -1,0 +1,21 @@
+msg = "league of legends"
+alph1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+alph2 = alph1
+
+def encrypt(string, offset):
+  global alph1, alph2
+  if offset < 0:
+    for i in range(0, offset):
+      tmp = alph2[-1]
+      alph2 = [tmp] + alph2[:-1]
+  else:
+    for i in range(0, offset):
+      tmp = alph2[1]
+      alph2.pop(0)
+      alph2.append(tmp)
+  for i in range(0, 25):
+    string = string.replace(alph1[i], alph2[i])
+  return string
+  
+newMsg = encrypt(msg, -2)
+print(newMsg)
